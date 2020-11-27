@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 19:34:59 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/27 02:21:03 by jagarcia         ###   ########.fr       */
+/*   Updated: 2020/11/27 02:53:26 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_section(unsigned char *section, unsigned long size, char bits)
 			else if (bits == X32)
 				ft_printf("\n%08lX        ", byte);
 			else
-				nm_error(ERROR_FORMAT);	
+				nm_error(ERROR_FORMAT);
 		}
 		ft_printf("%02hhX ", *(section + byte));
 		byte += 1;

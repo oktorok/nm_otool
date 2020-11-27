@@ -6,13 +6,14 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 18:09:16 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/27 02:19:00 by jagarcia         ###   ########.fr       */
+/*   Updated: 2020/11/27 02:52:01 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_otool.h"
 
-static void			check_sections(unsigned char *content_file, unsigned long offset)
+static void			check_sections(unsigned char *content_file,
+								unsigned long offset)
 {
 	unsigned int	j;
 	t_macho32_seg	segment;
@@ -26,18 +27,20 @@ static void			check_sections(unsigned char *content_file, unsigned long offset)
 									sizeof(section) * j);
 		if (!ft_strcmp(section->sectname, "__text"))
 		{
-			ft_printf("Content of (%s, %s):", section->segname, section->sectname);
+			ft_printf("Content of (%s, %s):", section->segname,
+					section->sectname);
 			print_section(content_file + section->offset, section->size, X32);
 		}
 	}
 }
 
-static t_macho32	find_text_section(t_macho32 macho, unsigned char *content_file)
+static t_macho32	find_text_section(t_macho32 macho,
+									unsigned char *content_file)
 {
 	unsigned int	i;
 	t_macho32_seg	loadc;
 	unsigned long	offset;
-	
+
 	i = -1;
 	offset = sizeof(macho.hdr);
 	while (++i < macho.hdr.ncmds)

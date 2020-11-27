@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:38:23 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/27 02:27:47 by jagarcia         ###   ########.fr       */
+/*   Updated: 2020/11/27 02:52:24 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void		find_text_section(t_pe32 pe32, unsigned char *content_file)
 		if (!ft_strcmp(".text", (char *)section.name))
 		{
 			ft_printf("Content of %s:", section.name);
-			print_section(content_file + section.offdata, section.sizedata, X64); 
+			print_section(content_file + section.offdata,
+						section.sizedata, X64);
 		}
 		i++;
 	}

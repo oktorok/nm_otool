@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 19:05:12 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/27 02:19:29 by jagarcia         ###   ########.fr       */
+/*   Updated: 2020/11/27 02:50:51 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static void			find_text_section(t_elf64 *elf,
 		if (!ft_strcmp(name, ".text"))
 		{
 			ft_printf("Content of %s:", name);
-			print_section(content_file + elf->shdr[i].offset, elf->shdr[i].size, X64);
+			print_section(content_file + elf->shdr[i].offset,
+						elf->shdr[i].size, X64);
 		}
 		i++;
 	}

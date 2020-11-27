@@ -6,13 +6,13 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 15:40:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/27 02:28:15 by jagarcia         ###   ########.fr       */
+/*   Updated: 2020/11/27 02:54:50 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_otool.h"
 
-static int		check_magic(unsigned char *content_file)
+static int	check_magic(unsigned char *content_file)
 {
 	if (*(unsigned int *)content_file == ELF_MAGIC)
 		return (ELF);
