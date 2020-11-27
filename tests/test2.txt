@@ -1,0 +1,380 @@
+
+ft_abs.o:
+0000000000000000 T ft_abs
+
+ft_atoi.o:
+0000000000000000 t convert
+0000000000000074 T ft_atoi
+
+ft_bzero.o:
+0000000000000000 T ft_bzero
+
+ft_error.o:
+                 U exit
+0000000000000000 T ft_error
+                 U ft_putstr_fd
+                 U _GLOBAL_OFFSET_TABLE_
+                 U perror
+
+ft_isalnum.o:
+0000000000000000 T ft_isalnum
+                 U ft_isalpha
+                 U ft_isdigit
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_isalpha.o:
+0000000000000000 T ft_isalpha
+
+ft_isascii.o:
+0000000000000000 T ft_isascii
+
+ft_isdigit.o:
+0000000000000000 T ft_isdigit
+
+ft_islower.o:
+0000000000000000 T ft_islower
+
+ft_isprint.o:
+0000000000000000 T ft_isprint
+
+ft_issdigit.o:
+                 U ft_isdigit
+0000000000000000 T ft_issdigit
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_isupper.o:
+0000000000000000 T ft_isupper
+
+ft_itoa_base.o:
+0000000000000000 t calcdigits
+0000000000000031 t calcnum
+00000000000000b5 T ft_itoa_base
+                 U ft_memalloc
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_itoa.o:
+00000000000000a0 t exceptions
+0000000000000000 t final_step
+000000000000013c T ft_itoa
+                 U ft_strcat
+                 U ft_strcpy
+                 U ft_strnew
+                 U _GLOBAL_OFFSET_TABLE_
+                 U __stack_chk_fail
+
+ft_lstadd.o:
+0000000000000000 T ft_lstadd
+
+ft_lstdel.o:
+0000000000000000 T ft_lstdel
+                 U ft_lstdelone
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_lstdelone.o:
+0000000000000000 T ft_lstdelone
+                 U ft_memdel
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_lstiter.o:
+0000000000000000 T ft_lstiter
+
+ft_lstmap.o:
+0000000000000000 T ft_lstmap
+                 U ft_lstnew
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_lstnew.o:
+0000000000000000 T ft_lstnew
+                 U ft_memalloc
+                 U ft_memcpy
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_lstnext.o:
+                 U ft_lstnew
+0000000000000000 T ft_lstnext
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_lstsplit.o:
+                 U ft_lstnew
+                 U ft_lstnext
+000000000000019b T ft_lstsplit
+                 U ft_strsub
+00000000000000a1 t func_while
+0000000000000000 t func_while2
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_memalloc.o:
+0000000000000000 T ft_memalloc
+                 U _GLOBAL_OFFSET_TABLE_
+                 U malloc
+
+ft_memccpy.o:
+0000000000000000 T ft_memccpy
+
+ft_memchr.o:
+0000000000000000 T ft_memchr
+
+ft_memcmp.o:
+0000000000000000 T ft_memcmp
+
+ft_memcpy.o:
+0000000000000000 T ft_memcpy
+
+ft_memdel.o:
+                 U free
+0000000000000000 T ft_memdel
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_memmove.o:
+0000000000000000 T ft_memmove
+
+ft_memset.o:
+0000000000000000 T ft_memset
+
+ft_min.o:
+0000000000000000 T ft_min
+
+ft_numint.o:
+0000000000000000 T ft_numint
+
+ft_pow.o:
+0000000000000000 T ft_pow
+
+ft_putbytes.o:
+0000000000000000 T ft_putbytes
+                 U _GLOBAL_OFFSET_TABLE_
+                 U write
+
+ft_putchar.o:
+0000000000000000 T ft_putchar
+                 U _GLOBAL_OFFSET_TABLE_
+                 U write
+
+ft_putchar_fd.o:
+0000000000000000 T ft_putchar_fd
+                 U _GLOBAL_OFFSET_TABLE_
+                 U write
+
+ft_putendl.o:
+                 U ft_putchar
+0000000000000000 T ft_putendl
+                 U ft_putstr
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_putendl_fd.o:
+                 U ft_putchar_fd
+0000000000000000 T ft_putendl_fd
+                 U ft_putstr_fd
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_putnbr.o:
+                 U ft_putchar
+0000000000000000 T ft_putnbr
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_putnbr_fd.o:
+                 U ft_putchar_fd
+0000000000000000 T ft_putnbr_fd
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_putstr.o:
+0000000000000000 T ft_putstr
+                 U ft_strlen
+                 U _GLOBAL_OFFSET_TABLE_
+                 U write
+
+ft_putstr_fd.o:
+                 U ft_putchar_fd
+0000000000000000 T ft_putstr_fd
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strcat.o:
+0000000000000000 T ft_strcat
+
+ft_strchr.o:
+0000000000000000 T ft_strchr
+
+ft_strclr.o:
+0000000000000000 T ft_strclr
+
+ft_strcmp.o:
+0000000000000000 T ft_strcmp
+
+ft_strcpy.o:
+0000000000000000 T ft_strcpy
+
+ft_strcut.o:
+                 U ft_strcat
+0000000000000000 T ft_strcut
+                 U ft_strlen
+                 U ft_strncpy
+                 U ft_strnew
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strdel.o:
+                 U free
+0000000000000000 T ft_strdel
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strdup.o:
+0000000000000000 T ft_strdup
+                 U ft_strlen
+                 U _GLOBAL_OFFSET_TABLE_
+                 U malloc
+
+ft_strequ.o:
+                 U ft_strcmp
+0000000000000000 T ft_strequ
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strinsert.o:
+                 U ft_strcat
+                 U ft_strcpy
+0000000000000000 T ft_strinsert
+                 U ft_strlen
+                 U ft_strncpy
+                 U ft_strnew
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strinvert.o:
+0000000000000000 T ft_strinvert
+                 U ft_strlen
+                 U ft_strnew
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_striter.o:
+0000000000000000 T ft_striter
+
+ft_striteri.o:
+0000000000000000 T ft_striteri
+
+ft_strjoin.o:
+                 U ft_memcpy
+                 U ft_strcat
+0000000000000000 T ft_strjoin
+                 U ft_strlen
+                 U ft_strnew
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strlcat.o:
+0000000000000000 T ft_strlcat
+                 U ft_strlen
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strlen.o:
+0000000000000000 T ft_strlen
+
+ft_strmap.o:
+                 U ft_strlen
+0000000000000000 T ft_strmap
+                 U ft_strnew
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strmapi.o:
+                 U ft_strlen
+0000000000000000 T ft_strmapi
+                 U ft_strnew
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strncat.o:
+0000000000000000 T ft_strncat
+
+ft_strncmp.o:
+0000000000000000 T ft_strncmp
+
+ft_strncpy.o:
+0000000000000000 T ft_strncpy
+
+ft_strnequ.o:
+                 U ft_strncmp
+0000000000000000 T ft_strnequ
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strnew.o:
+0000000000000000 T ft_strnew
+                 U _GLOBAL_OFFSET_TABLE_
+                 U malloc
+
+ft_strnjoin.o:
+                 U ft_strlen
+                 U ft_strnew
+0000000000000000 T ft_strnjoin
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strnstr.o:
+                 U ft_strlen
+0000000000000000 T ft_strnstr
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strrchr.o:
+                 U ft_strlen
+0000000000000000 T ft_strrchr
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strsplit.o:
+                 U free
+0000000000000158 T ft_strsplit
+                 U ft_strsub
+0000000000000000 t func_while
+                 U _GLOBAL_OFFSET_TABLE_
+                 U malloc
+                 U __stack_chk_fail
+
+ft_strstr.o:
+                 U ft_strlen
+0000000000000000 T ft_strstr
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strsub.o:
+                 U ft_strnew
+0000000000000000 T ft_strsub
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_strtrim.o:
+0000000000000000 t cpyandret
+                 U ft_memcpy
+                 U ft_strlen
+0000000000000066 T ft_strtrim
+                 U _GLOBAL_OFFSET_TABLE_
+                 U malloc
+
+ft_swap.o:
+0000000000000000 T ft_swap
+
+ft_tolower.o:
+0000000000000000 T ft_tolower
+
+ft_toupper.o:
+0000000000000000 T ft_toupper
+
+get_next_line.o:
+0000000000000000 t cheker
+                 U ft_memalloc
+                 U ft_memset
+                 U ft_strchr
+                 U ft_strcpy
+                 U ft_strdel
+                 U ft_strlen
+                 U ft_strncat
+                 U ft_strncpy
+                 U ft_strnew
+0000000000000415 T get_next_line
+                 U _GLOBAL_OFFSET_TABLE_
+0000000000000000 b mikel.0
+00000000000001a0 t mikeler
+0000000000000304 t newmikel
+                 U read
+000000000000025a t reader
+                 U __stack_chk_fail
+
+ft_strrealloc.o:
+                 U ft_strcpy
+                 U ft_strlen
+                 U ft_strnew
+0000000000000000 T ft_strrealloc
+                 U _GLOBAL_OFFSET_TABLE_
+
+ft_putbits.o:
+0000000000000000 T ft_putbits
+                 U ft_putnbr
+                 U _GLOBAL_OFFSET_TABLE_

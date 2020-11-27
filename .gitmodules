@@ -1,0 +1,6 @@
+[submodule "ft_printf"]
+	path = ft_printf
+	url = https://www.github.com/oktorok/ft_printf
+[submodule "libft"]
+	path = libft
+	url = https://www.github.com/oktorok/libft

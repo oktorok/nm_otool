@@ -1,0 +1,4 @@
+macho32.c
+print_macho32_table.c
+select_macho32_nmtype.c
+prepare_macho32_sort.c

@@ -1,0 +1,5 @@
+elf32.c
+find_elf32_segment.c
+prepare_elf32_sort.c
+select_elf32_nmtype.c
+print_elf32_table.c

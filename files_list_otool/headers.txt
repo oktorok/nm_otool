@@ -1,0 +1,5 @@
+ft_otool.h
+ft_elf.h
+ft_arch.h
+ft_macho.h
+ft_pe.h
