@@ -49,7 +49,7 @@ static int	choose_elf_format(unsigned char *content_file)
 	return (1);
 }
 
-int			choose_format(unsigned char *content_file, char *filename)
+int	choose_format(unsigned char *content_file, char *filename)
 {
 	int	format;
 	int	ret;

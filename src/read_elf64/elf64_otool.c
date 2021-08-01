@@ -12,7 +12,7 @@
 
 #include "ft_otool.h"
 
-static t_elf64		fill_elf(unsigned char *content_file)
+static t_elf64	fill_elf(unsigned char *content_file)
 {
 	t_elf64	elf;
 
@@ -22,8 +22,8 @@ static t_elf64		fill_elf(unsigned char *content_file)
 	return (elf);
 }
 
-static void			find_text_section(t_elf64 *elf,
-									unsigned char *content_file)
+static void	find_text_section(t_elf64 *elf,
+							unsigned char *content_file)
 {
 	char			*shstrtable;
 	char			*name;
@@ -38,13 +38,13 @@ static void			find_text_section(t_elf64 *elf,
 		{
 			ft_printf("Content of %s:", name);
 			print_section(content_file + elf->shdr[i].offset,
-						elf->shdr[i].size, X64);
+				      elf->shdr[i].size, X64, elf->shdr[i].offset);
 		}
 		i++;
 	}
 }
 
-void				elf64(unsigned char *content_file)
+void	elf64(unsigned char *content_file)
 {
 	t_elf64	elf;
 

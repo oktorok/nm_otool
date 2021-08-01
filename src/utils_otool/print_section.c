@@ -12,7 +12,8 @@
 
 #include "ft_otool.h"
 
-void	print_section(unsigned char *section, unsigned long size, char bits)
+void	print_section(unsigned char *section, unsigned long size, char bits,
+			unsigned long offset)
 {
 	unsigned long	byte;
 
@@ -22,13 +23,13 @@ void	print_section(unsigned char *section, unsigned long size, char bits)
 		if (!(byte % 16))
 		{
 			if (bits == X64)
-				ft_printf("\n%016lX        ", byte);
+				ft_printf("\n%016lx        ", byte + offset);
 			else if (bits == X32)
-				ft_printf("\n%08lX        ", byte);
+				ft_printf("\n%08lx        ", byte + offset);
 			else
 				nm_error(ERROR_FORMAT);
 		}
-		ft_printf("%02hhX ", *(section + byte));
+		ft_printf("%02hhx ", *(section + byte));
 		byte += 1;
 	}
 }

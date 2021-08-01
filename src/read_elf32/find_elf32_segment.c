@@ -12,7 +12,7 @@
 
 #include "ft_nm.h"
 
-unsigned short		find_elf32_segment(t_elf32 elf, unsigned short shndx)
+unsigned short	find_elf32_segment(t_elf32 elf, unsigned short shndx)
 {
 	unsigned short	i;
 	t_elf32_sheader	sh;
@@ -25,8 +25,8 @@ unsigned short		find_elf32_segment(t_elf32 elf, unsigned short shndx)
 	i = -1;
 	while (++i < elf.ehdr.phnum)
 	{
-		if (elf.phdr[i].offset <= sh.offset && elf.phdr[i].offset +
-			elf.phdr[i].memsz >= sh.offset)
+		if (elf.phdr[i].offset <= sh.offset && elf.phdr[i].offset
+			+ elf.phdr[i].memsz >= sh.offset)
 			return (i);
 	}
 	return (-1);

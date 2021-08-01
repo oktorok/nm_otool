@@ -33,15 +33,15 @@ static void	quicksort(t_sort *sort, unsigned long start_end[2],
 		i++;
 	}
 	swap_value(sort + (j + 1), sort + start_end[1]);
-	quicksort(sort, (unsigned long[2]){start_end[0], j}, f);
-	quicksort(sort, (unsigned long[2]){j + 2, start_end[1]}, f);
+	quicksort(sort, (unsigned long [2]){start_end[0], j}, f);
+	quicksort(sort, (unsigned long [2]){j + 2, start_end[1]}, f);
 }
 
-t_sort		*order_symb_alpha(t_sort *sort, unsigned long symlen, char slash)
+t_sort	*order_symb_alpha(t_sort *sort, unsigned long symlen, char slash)
 {
 	if (!slash)
-		quicksort(sort, (unsigned long[2]){0, symlen - 1}, strcmp_onlyalph);
+		quicksort(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlyalph);
 	else
-		quicksort(sort, (unsigned long[2]){0, symlen - 1}, ft_strcmp);
+		quicksort(sort, (unsigned long [2]){0, symlen - 1}, ft_strcmp);
 	return (sort);
 }

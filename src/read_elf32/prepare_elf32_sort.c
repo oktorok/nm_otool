@@ -12,27 +12,28 @@
 
 #include "ft_nm.h"
 
-t_sort			*prepare_elf32_sort(t_elf32 elf, unsigned char *content_file,
-									unsigned long st_pos, unsigned long symlen)
+t_sort	*prepare_elf32_sort(t_elf32 elf, unsigned char *content_file,
+							unsigned long st_pos, unsigned long symlen)
 {
 	unsigned long	i;
 	t_sort			*sort;
 	t_elf32_symb	*symtable;
 	unsigned char	*strtable;
 
-	if (!(sort = ft_memalloc(sizeof(t_sort) * symlen)))
+	sort = ft_memalloc(sizeof(t_sort) * symlen);
+	if (!sort)
 		nm_error(ERROR_ALLOC);
-	i = 0;
+	i = -1;
 	symtable = (t_elf32_symb *)(content_file + elf.shdr[st_pos].offset);
 	strtable = content_file + elf.shdr[elf.shdr[st_pos].link].offset;
-	while (i < symlen)
+	while (++i < symlen)
 	{
 		sort[i] = (t_sort){
 			(void *)(symtable + i),
 			strtable + symtable[i].name,
 			symtable[i].value,
 			find_elf32_segment(elf, symtable[i].shndx),
-			i++
+			i
 		};
 	}
 	sort = order_symb_alpha(sort, symlen, NO_SLASH);

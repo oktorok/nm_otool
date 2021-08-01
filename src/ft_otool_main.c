@@ -18,12 +18,14 @@ unsigned char	*read_file(char *filename, size_t *filesize)
 	unsigned char	*content_file;
 	struct stat		stat;
 
-	if ((fd = open(filename, O_RDONLY)) < 0)
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
 		nm_error(ERROR_OPEN);
 	fstat(fd, &stat);
 	*filesize = stat.st_size;
-	if ((content_file = mmap(0, *filesize, PROT_READ, MAP_PRIVATE,
-							fd, 0)) == MAP_FAILED)
+	content_file = mmap(0, *filesize, PROT_READ,
+			MAP_PRIVATE, fd, 0);
+	if (content_file == MAP_FAILED)
 		nm_error("ERROR_ALLOC");
 	close(fd);
 	return (content_file);
@@ -43,8 +45,8 @@ int	main(int argn, char **argv)
 	}
 	else
 	{
-		i = 1;
-		while (i < argn)
+		i = 0;
+		while (++i < argn)
 		{
 			if (argn > 2)
 				ft_printf("\n%s:\n", argv[i]);
@@ -53,7 +55,6 @@ int	main(int argn, char **argv)
 				nm_error(ERROR_FORMAT);
 			if (munmap(content_file, filesize))
 				nm_error(ERROR_FREE);
-			i++;
 		}
 	}
 	return (0);

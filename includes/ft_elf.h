@@ -25,7 +25,7 @@
 # define STB_WEAK   2
 # define PF_R 0x4
 
-typedef struct		s_elf32_eheader {
+typedef struct s_elf32_eheader {
 	unsigned char	ident[16];
 	unsigned short	type;
 	unsigned short	machine;
@@ -42,7 +42,7 @@ typedef struct		s_elf32_eheader {
 	unsigned short	shstrndx;
 }					t_elf32_eheader;
 
-typedef struct		s_elf32_pheader {
+typedef struct s_elf32_pheader {
 	unsigned int	type;
 	unsigned int	offset;
 	unsigned int	vaddr;
@@ -53,7 +53,7 @@ typedef struct		s_elf32_pheader {
 	unsigned int	align;
 }					t_elf32_pheader;
 
-typedef struct		s_elf32_sheader {
+typedef struct s_elf32_sheader {
 	unsigned int	name;
 	unsigned int	type;
 	unsigned int	flags;
@@ -66,7 +66,7 @@ typedef struct		s_elf32_sheader {
 	unsigned int	entsize;
 }					t_elf32_sheader;
 
-typedef struct		s_elf32_symb {
+typedef struct s_elf32_symb {
 	unsigned int	name;
 	unsigned int	value;
 	unsigned int	size;
@@ -75,7 +75,7 @@ typedef struct		s_elf32_symb {
 	unsigned short	shndx;
 }					t_elf32_symb;
 
-typedef struct		s_elf32 {
+typedef struct s_elf32 {
 	t_elf32_eheader	ehdr;
 	t_elf32_pheader	*phdr;
 	t_elf32_sheader	*shdr;
@@ -90,7 +90,7 @@ typedef struct		s_elf32 {
 	unsigned short	bss;
 }					t_elf32;
 
-typedef struct		s_elf64_eheader {
+typedef struct s_elf64_eheader {
 	unsigned char	ident[16];
 	unsigned short	type;
 	unsigned short	machine;
@@ -107,7 +107,7 @@ typedef struct		s_elf64_eheader {
 	unsigned short	shstrndx;
 }					t_elf64_eheader;
 
-typedef struct		s_elf64_pheader {
+typedef struct s_elf64_pheader {
 	unsigned int	type;
 	unsigned int	flags;
 	unsigned long	offset;
@@ -118,7 +118,7 @@ typedef struct		s_elf64_pheader {
 	unsigned long	align;
 }					t_elf64_pheader;
 
-typedef struct		s_elf64_sheader {
+typedef struct s_elf64_sheader {
 	unsigned int	name;
 	unsigned int	type;
 	unsigned long	flags;
@@ -131,7 +131,7 @@ typedef struct		s_elf64_sheader {
 	unsigned long	entsize;
 }					t_elf64_sheader;
 
-typedef struct		s_elf64_symb {
+typedef struct s_elf64_symb {
 	unsigned int	name;
 	unsigned char	info;
 	unsigned char	other;
@@ -140,7 +140,7 @@ typedef struct		s_elf64_symb {
 	unsigned long	size;
 }					t_elf64_symb;
 
-typedef struct		s_elf64 {
+typedef struct s_elf64 {
 	t_elf64_eheader	ehdr;
 	t_elf64_pheader	*phdr;
 	t_elf64_sheader	*shdr;

@@ -12,6 +12,24 @@
 
 #include "ft_nm.h"
 
+static char	select_macho64_nmtype2(t_macho64_sym symbol, t_macho64 macho)
+{
+	int	debug;
+
+	debug = symbol.type & N_STAB;
+	if (symbol.sect == macho.bss_sect)
+	{
+		if (symbol.type & N_EXT)
+			return ('B');
+		return ('b');
+	}
+	if (debug)
+		return ('-');
+	if (symbol.type == N_INDR)
+		return ('I');
+	return ('S');
+}
+
 char	select_macho64_nmtype(t_macho64_sym symbol, t_macho64 macho)
 {
 	int	type;
@@ -26,14 +44,16 @@ char	select_macho64_nmtype(t_macho64_sym symbol, t_macho64 macho)
 	if (type == N_ABS)
 		return ('A');
 	if (symbol.sect == macho.text_sect)
-		return (symbol.type & N_EXT ? 'T' : 't');
+	{
+		if (symbol.type & N_EXT)
+			return ('T');
+		return ('t');
+	}
 	if (symbol.sect == macho.data_sect)
-		return (symbol.type & N_EXT ? 'D' : 'd');
-	if (symbol.sect == macho.bss_sect)
-		return (symbol.type & N_EXT ? 'B' : 'b');
-	if (debug)
-		return ('-');
-	if (symbol.type == N_INDR)
-		return ('I');
-	return ('S');
+	{
+		if (symbol.type & N_EXT)
+			return ('D');
+		return ('d');
+	}
+	return (select_macho32_nmtype2(symbol, macho));
 }

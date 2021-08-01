@@ -12,6 +12,28 @@
 
 #include "ft_nm.h"
 
+static char	select_pe32_nmtype2(t_pe32_symbol symbol, t_pe32 pe32)
+{
+	short	sect;
+
+	sect = symbol.sect;
+	if (sect == (short)pe32.data_sect)
+	{
+		if (symbol.storageclass == IMAGE_SYM_CLASS_EXTERNAL)
+			return ('D');
+		return ('d');
+	}
+	if (sect == (short)pe32.bss_sect)
+	{
+		if (symbol.storageclass == IMAGE_SYM_CLASS_EXTERNAL)
+			return ('B');
+		return ('b');
+	}	
+	if (sect == IMAGE_SYM_DEBUG)
+		return ('-');
+	return ('S');
+}
+
 char	select_pe32_nmtype(t_pe32_symbol symbol, t_pe32 pe32)
 {
 	short	sect;
@@ -22,14 +44,16 @@ char	select_pe32_nmtype(t_pe32_symbol symbol, t_pe32 pe32)
 	if (sect == IMAGE_SYM_ABSOLUTE)
 		return ('A');
 	if (sect == (short)pe32.text_sect)
-		return (symbol.storageclass == IMAGE_SYM_CLASS_EXTERNAL ? 'T' : 't');
+	{
+		if (symbol.storageclass == IMAGE_SYM_CLASS_EXTERNAL)
+			return ('T');
+		return ('t');
+	}
 	if (sect == (short)pe32.rodata_sect)
-		return (symbol.storageclass == IMAGE_SYM_CLASS_EXTERNAL ? 'R' : 'r');
-	if (sect == (short)pe32.data_sect)
-		return (symbol.storageclass == IMAGE_SYM_CLASS_EXTERNAL ? 'D' : 'd');
-	if (sect == (short)pe32.bss_sect)
-		return (symbol.storageclass == IMAGE_SYM_CLASS_EXTERNAL ? 'B' : 'b');
-	if (sect == IMAGE_SYM_DEBUG)
-		return ('-');
-	return ('S');
+	{
+		if (symbol.storageclass == IMAGE_SYM_CLASS_EXTERNAL)
+			return ('R');
+		return ('r');
+	}
+	return (select_pe32_nmtype2(symbol, pe32));
 }

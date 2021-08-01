@@ -12,7 +12,7 @@
 
 #include "ft_nm.h"
 
-unsigned long		find_elf64_segment(t_elf64 elf, unsigned long shndx)
+unsigned long	find_elf64_segment(t_elf64 elf, unsigned long shndx)
 {
 	unsigned short	i;
 	t_elf64_sheader	sh;
@@ -25,8 +25,8 @@ unsigned long		find_elf64_segment(t_elf64 elf, unsigned long shndx)
 	i = -1;
 	while (++i < elf.ehdr.phnum)
 	{
-		if (elf.phdr[i].offset <= sh.offset && elf.phdr[i].offset +
-			elf.phdr[i].memsz >= sh.offset)
+		if (elf.phdr[i].offset <= sh.offset && elf.phdr[i].offset
+			+ elf.phdr[i].memsz >= sh.offset)
 			return (i);
 	}
 	return (-1);

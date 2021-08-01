@@ -12,8 +12,8 @@
 
 #include "ft_nm.h"
 
-static void			fill_elf_specialsegments(t_elf64 *elf,
-											unsigned char *content_file)
+static void	fill_elf_specialsegments(t_elf64 *elf,
+									unsigned char *content_file)
 {
 	char			*shstrtable;
 	char			*name;
@@ -36,7 +36,7 @@ static void			fill_elf_specialsegments(t_elf64 *elf,
 	}
 }
 
-static t_elf64		fill_elf(unsigned char *content_file)
+static t_elf64	fill_elf(unsigned char *content_file)
 {
 	t_elf64	elf;
 
@@ -46,8 +46,8 @@ static t_elf64		fill_elf(unsigned char *content_file)
 	return (elf);
 }
 
-static void			find_elf_symboltable(t_elf64 elf,
-									unsigned char *content_file)
+static void	find_elf_symboltable(t_elf64 elf,
+							unsigned char *content_file)
 {
 	unsigned long	i;
 	t_sort			*sort;
@@ -67,7 +67,7 @@ static void			find_elf_symboltable(t_elf64 elf,
 	}
 }
 
-void				elf64(unsigned char *content_file)
+void	elf64(unsigned char *content_file)
 {
 	t_elf64	elf;
 

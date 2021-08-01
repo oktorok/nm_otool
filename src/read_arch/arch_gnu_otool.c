@@ -14,16 +14,16 @@
 
 static unsigned int	big_to_lit(int a)
 {
-	int b;
+	int	b;
 
-	b = ((a & 0xFF000000) >> 24) |
-		((a & 0x00FF0000) >> 8) |
-		((a & 0x0000FF00) << 8) |
-		((a & 0x000000FF) << 24);
+	b = ((a & 0xFF000000) >> 24)
+		| ((a & 0x00FF0000) >> 8)
+		| ((a & 0x0000FF00) << 8)
+		| ((a & 0x000000FF) << 24);
 	return (b);
 }
 
-static t_arch		fill_arch(unsigned char *content_file)
+static t_arch	fill_arch(unsigned char *content_file)
 {
 	t_arch	arch;
 	int		arch_size;
@@ -42,7 +42,7 @@ static t_arch		fill_arch(unsigned char *content_file)
 	return (arch);
 }
 
-static void			print_filename_gnu(unsigned char *content_file,
+static void	print_filename_gnu(unsigned char *content_file,
 								unsigned char *strtable)
 {
 	unsigned char	*name;
@@ -57,7 +57,7 @@ static void			print_filename_gnu(unsigned char *content_file,
 	ft_putendl(":");
 }
 
-void				arch_gnu(unsigned char *content_file)
+void	arch_gnu(unsigned char *content_file)
 {
 	t_arch			arch;
 	unsigned int	offset;

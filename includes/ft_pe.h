@@ -17,7 +17,7 @@
 # define IMAGE_SYM_CLASS_EXTERNAL 2
 # define IMAGE_SYM_DEBUG -2
 
-typedef struct		s_pe32_doshdr {
+typedef struct s_pe32_doshdr {
 	unsigned short	magic;
 	unsigned short	cblp;
 	unsigned short	cp;
@@ -38,7 +38,7 @@ typedef struct		s_pe32_doshdr {
 	unsigned short	res2[10];
 	unsigned int	lfanew;
 }					t_pe32_doshdr;
-typedef struct		s_pe32_coffhdr {
+typedef struct s_pe32_coffhdr {
 	unsigned short	machine;
 	unsigned short	nsect;
 	unsigned int	timestamp;
@@ -47,7 +47,7 @@ typedef struct		s_pe32_coffhdr {
 	unsigned short	size_opthdr;
 	unsigned short	desc;
 }					t_pe32_coffhdr;
-typedef struct		s_pe32_section{
+typedef struct s_pe32_section{
 	unsigned char	name[8];
 	unsigned int	virtualsize;
 	unsigned int	virtualaddr;
@@ -59,11 +59,11 @@ typedef struct		s_pe32_section{
 	unsigned short	linenumnum;
 	unsigned int	description;
 }					t_pe32_section;
-typedef union		u_sname {
+typedef union u_sname {
 	char			name[8];
 	int				offset[2];
 }					t_name;
-typedef struct		s_pe32_symbol {
+typedef struct s_pe32_symbol {
 	t_name			name;
 	unsigned int	value;
 	unsigned short	sect;
@@ -71,7 +71,7 @@ typedef struct		s_pe32_symbol {
 	unsigned char	storageclass;
 	unsigned char	n_auxsymbol;
 }					t_pe32_symbol;
-typedef struct		s_pe32 {
+typedef struct s_pe32 {
 	t_pe32_doshdr	doshdr;
 	t_pe32_coffhdr	coffhdr;
 	unsigned char	*strtable;

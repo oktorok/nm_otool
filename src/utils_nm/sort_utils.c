@@ -21,7 +21,7 @@ void	swap_value(t_sort *a, t_sort *b)
 	*b = tmp;
 }
 
-int		strcmp_onlyalph(const char *s1, const char *s2)
+int	strcmp_onlyalph(const char *s1, const char *s2)
 {
 	int				j;
 	int				i;

@@ -15,7 +15,7 @@
 # define BSD_MODE 1
 # define GNU_MODE 2
 
-typedef struct		s_arch_hdr {
+typedef struct s_arch_hdr {
 	char			name[16];
 	char			date[12];
 	char			uid[6];
@@ -24,15 +24,15 @@ typedef struct		s_arch_hdr {
 	char			size[10];
 	char			fmag[2];
 }					t_arch_hdr;
-typedef struct		s_arch_ranlib {
+typedef struct s_arch_ranlib {
 	unsigned int	strx;
 	unsigned int	offset;
 }					t_arch_ranlib;
-typedef union		u_object {
+typedef union u_object {
 	unsigned int	*offset;
 	t_arch_ranlib	*ranlib;
 }					t_object;
-typedef struct		s_arch {
+typedef struct s_arch {
 	unsigned char	*strtable;
 	unsigned int	objnum;
 	t_object		object;

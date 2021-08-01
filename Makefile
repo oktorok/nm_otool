@@ -4,6 +4,8 @@ NAME1 = ft_nm
 
 NAME2 = ft_otool
 
+.PHONY : $(NAME2) $(NAME1)
+
 all: $(NAME1) $(NAME2)
 
 $(NAME1):

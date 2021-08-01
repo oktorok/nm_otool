@@ -54,8 +54,9 @@ void				macho32(unsigned char *content_file);
 void				pe32(unsigned char *content_file);
 void				nm_error(char *err);
 int					choose_format(unsigned char *content_file, char *filename);
-void				print_section(unsigned char *section, unsigned long size, char bits);
+void				print_section(unsigned char *section, unsigned long size,
+						char bits, unsigned long offset);
 void				arch_gnu(unsigned char *content_file);
 void				arch_bsd(unsigned char *content_file,
-							char *filename);
+						char *filename);
 #endif

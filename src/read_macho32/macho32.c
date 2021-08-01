@@ -12,8 +12,8 @@
 
 #include "ft_nm.h"
 
-static void			check_sections(t_macho32 *macho,
-							unsigned char *content_file, unsigned int *sect_num)
+static void	check_sections(t_macho32 *macho,
+					unsigned char *content_file, unsigned int *sect_num)
 {
 	unsigned int	j;
 	t_macho32_seg	segment;
@@ -23,8 +23,8 @@ static void			check_sections(t_macho32 *macho,
 	j = -1;
 	while (++j < segment.nsects)
 	{
-		section = *(t_macho32_sect *)(content_file + sizeof(segment) +
-									sizeof(section) * j);
+		section = *(t_macho32_sect *)(content_file + sizeof(segment)
+				+ sizeof(section) * j);
 		if (!ft_strcmp(section.sectname, "__text"))
 			macho->text_sect = *sect_num + 1;
 		else if (!ft_strcmp(section.sectname, "__data"))
@@ -59,8 +59,8 @@ static t_macho32	fill_macho(unsigned char *content_file)
 	return (macho);
 }
 
-static int			find_macho_symboltable(t_macho32 macho,
-									unsigned char *content_file)
+static int	find_macho_symboltable(t_macho32 macho,
+							unsigned char *content_file)
 {
 	unsigned int	i;
 	unsigned long	offset;
@@ -73,12 +73,12 @@ static int			find_macho_symboltable(t_macho32 macho,
 	sym_check = 0;
 	while (++i < macho.hdr.ncmds)
 	{
-		loadc = (t_macho32_loadc *)(content_file +
-								sizeof(t_macho32_hdr) + offset);
+		loadc = (t_macho32_loadc *)(content_file
+				+ sizeof(t_macho32_hdr) + offset);
 		if (loadc->cmd == LC_SYMTAB)
 		{
 			sort = prepare_macho32_sort(
-				*(t_macho32_symtab *)loadc, content_file);
+					*(t_macho32_symtab *)loadc, content_file);
 			print_macho32_table(macho, sort, *(t_macho32_symtab *)loadc);
 			sym_check += 1;
 			free(sort);
@@ -88,7 +88,7 @@ static int			find_macho_symboltable(t_macho32 macho,
 	return (sym_check);
 }
 
-void				macho32(unsigned char *content_file)
+void	macho32(unsigned char *content_file)
 {
 	t_macho32	macho;
 	int			sym_check;

@@ -12,24 +12,24 @@
 
 #include "ft_otool.h"
 
-static void		find_text_section(t_pe32 pe32, unsigned char *content_file)
+static void	find_text_section(t_pe32 pe32, unsigned char *content_file)
 {
 	unsigned short	i;
 	unsigned long	offset;
 	t_pe32_section	section;
 
-	offset = pe32.doshdr.lfanew + 4 + sizeof(t_pe32_coffhdr) +
-		pe32.coffhdr.size_opthdr;
+	offset = pe32.doshdr.lfanew + 4 + sizeof(t_pe32_coffhdr)
+		+ pe32.coffhdr.size_opthdr;
 	i = 0;
 	while (i < pe32.coffhdr.nsect)
 	{
-		section = *(t_pe32_section *)(content_file + offset + i *
-									sizeof(t_pe32_section));
+		section = *(t_pe32_section *)(content_file + offset + i
+				* sizeof(t_pe32_section));
 		if (!ft_strcmp(".text", (char *)section.name))
 		{
 			ft_printf("Content of %s:", section.name);
 			print_section(content_file + section.offdata,
-						section.sizedata, X64);
+				      section.sizedata, X64, section.offdata);
 		}
 		i++;
 	}
@@ -44,7 +44,7 @@ static t_pe32	fill_pe32(unsigned char *content_file)
 	return (pe32);
 }
 
-void			pe32(unsigned char *content_file)
+void	pe32(unsigned char *content_file)
 {
 	t_pe32	pe32;
 

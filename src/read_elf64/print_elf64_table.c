@@ -12,7 +12,7 @@
 
 #include "ft_nm.h"
 
-static void		print_elf_symbol(t_sort sort, t_elf64 elf)
+static void	print_elf_symbol(t_sort sort, t_elf64 elf)
 {
 	t_elf64_symb	sym;
 	int				type;
@@ -30,8 +30,8 @@ static void		print_elf_symbol(t_sort sort, t_elf64 elf)
 	}
 }
 
-void			print_elf64_table(t_elf64 elf, t_sort *sorted,
-								unsigned long symlen)
+void	print_elf64_table(t_elf64 elf, t_sort *sorted,
+						unsigned long symlen)
 {
 	unsigned long	i;
 

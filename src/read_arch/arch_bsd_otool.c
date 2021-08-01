@@ -12,7 +12,7 @@
 
 #include "ft_otool.h"
 
-static t_arch		fill_arch(unsigned char *content_file)
+static t_arch	fill_arch(unsigned char *content_file)
 {
 	t_arch	arch;
 	int		t;
@@ -27,7 +27,7 @@ static t_arch		fill_arch(unsigned char *content_file)
 	return (arch);
 }
 
-static void			print_object(t_arch arch, unsigned char *content_file,
+static void	print_object(t_arch arch, unsigned char *content_file,
 								char *filename, int i)
 {
 	unsigned long	offset;
@@ -39,7 +39,7 @@ static void			print_object(t_arch arch, unsigned char *content_file,
 		ft_printf(ERROR_FORMAT);
 }
 
-void				arch_bsd(unsigned char *content_file, char *filename)
+void	arch_bsd(unsigned char *content_file, char *filename)
 {
 	t_arch			arch;
 	unsigned int	i;
@@ -48,8 +48,8 @@ void				arch_bsd(unsigned char *content_file, char *filename)
 	i = 0;
 	while (i < arch.objnum)
 	{
-		if (!i || arch.object.ranlib[i - 1].offset !=
-			arch.object.ranlib[i].offset)
+		if (!i || arch.object.ranlib[i - 1].offset
+			!= arch.object.ranlib[i].offset)
 			print_object(arch, content_file, filename, i++);
 		else
 			i++;

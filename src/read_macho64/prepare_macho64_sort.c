@@ -19,19 +19,20 @@ t_sort	*prepare_macho64_sort(t_macho64_symtab symtab,
 	t_macho64_sym	*symbol;
 	unsigned int	i;
 
-	if (!(sort = ft_memalloc(sizeof(t_sort) * symtab.nsyms)))
+	sort = ft_memalloc(sizeof(t_sort) * symtab.nsyms);
+	if (!sort)
 		nm_error(ERROR_ALLOC);
-	i = 0;
-	while (i < symtab.nsyms)
+	i = -1;
+	while (++i < symtab.nsyms)
 	{
-		symbol = (t_macho64_sym *)(content_file + symtab.symoff +
-								sizeof(t_macho64_sym) * i);
+		symbol = (t_macho64_sym *)(content_file + symtab.symoff
+				+ sizeof(t_macho64_sym) * i);
 		sort[i] = (t_sort){
 			symbol,
 			content_file + symtab.stroff + symbol->strx,
 			symbol->value,
 			symbol->sect,
-			i++
+			i
 		};
 	}
 	sort = order_symb_alpha(sort, symtab.nsyms, SLASH);

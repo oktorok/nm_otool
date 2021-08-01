@@ -38,7 +38,7 @@ static void	print_pe_symbol(t_sort symbol, t_pe32 pe32)
 		ft_printf("%08x %c %s\n", symbol.value, type, symbol.name);
 }
 
-void		print_pe32_table(t_pe32 pe32, t_sort *sort)
+void	print_pe32_table(t_pe32 pe32, t_sort *sort)
 {
 	unsigned int	i;
 

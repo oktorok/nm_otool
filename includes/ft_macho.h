@@ -22,7 +22,7 @@
 # define N_INDR	0xa
 # define N_EXT	0x01
 
-typedef struct			s_macho64_hdr {
+typedef struct s_macho64_hdr {
 	unsigned int		magic;
 	unsigned int		cputype;
 	unsigned int		cpusubtype;
@@ -32,11 +32,11 @@ typedef struct			s_macho64_hdr {
 	unsigned int		flags;
 	unsigned int		reserved;
 }						t_macho64_hdr;
-typedef struct			s_macho64_loadc {
+typedef struct s_macho64_loadc {
 	unsigned int		cmd;
 	unsigned int		cmdsize;
 }						t_macho64_loadc;
-typedef struct			s_macho64_symtab {
+typedef struct s_macho64_symtab {
 	unsigned int		cmd;
 	unsigned int		cmdsize;
 	unsigned int		symoff;
@@ -44,14 +44,14 @@ typedef struct			s_macho64_symtab {
 	unsigned int		stroff;
 	unsigned int		strsize;
 }						t_macho64_symtab;
-typedef struct			s_macho64_sym {
+typedef struct s_macho64_sym {
 	unsigned int		strx;
 	unsigned char		type;
 	unsigned char		sect;
 	unsigned short		desc;
 	unsigned long		value;
 }						t_macho64_sym;
-typedef struct			s_macho64_seg {
+typedef struct s_macho64_seg {
 	unsigned int		cmd;
 	unsigned int		cmdsize;
 	char				segname[16];
@@ -64,7 +64,7 @@ typedef struct			s_macho64_seg {
 	unsigned int		nsects;
 	unsigned int		flags;
 }						t_macho64_seg;
-typedef struct			s_macho64_sect {
+typedef struct s_macho64_sect {
 	char				sectname[16];
 	char				segname[16];
 	unsigned long		addr;
@@ -77,13 +77,13 @@ typedef struct			s_macho64_sect {
 	unsigned int		reserved1;
 	unsigned int		reserved2;
 }						t_macho64_sect;
-typedef struct			s_macho64 {
+typedef struct s_macho64 {
 	t_macho64_hdr		hdr;
 	unsigned int		text_sect;
 	unsigned int		bss_sect;
 	unsigned int		data_sect;
 }						t_macho64;
-typedef struct			s_macho32_hdr {
+typedef struct s_macho32_hdr {
 	unsigned int		magic;
 	unsigned int		cputype;
 	unsigned int		cpusubtype;
@@ -92,11 +92,11 @@ typedef struct			s_macho32_hdr {
 	unsigned int		sizeofcmds;
 	unsigned int		flags;
 }						t_macho32_hdr;
-typedef struct			s_macho32_loadc {
+typedef struct s_macho32_loadc {
 	unsigned int		cmd;
 	unsigned int		cmdsize;
 }						t_macho32_loadc;
-typedef struct			s_macho32_symtab {
+typedef struct s_macho32_symtab {
 	unsigned int		cmd;
 	unsigned int		cmdsize;
 	unsigned int		symoff;
@@ -104,14 +104,14 @@ typedef struct			s_macho32_symtab {
 	unsigned int		stroff;
 	unsigned int		strsize;
 }						t_macho32_symtab;
-typedef struct			s_macho32_sym {
+typedef struct s_macho32_sym {
 	unsigned int		strx;
 	unsigned char		type;
 	unsigned char		sect;
 	unsigned short		desc;
 	unsigned int		value;
 }						t_macho32_sym;
-typedef struct			s_macho32_seg {
+typedef struct s_macho32_seg {
 	unsigned int		cmd;
 	unsigned int		cmdsize;
 	char				segname[16];
@@ -124,7 +124,7 @@ typedef struct			s_macho32_seg {
 	unsigned int		nsects;
 	unsigned int		flags;
 }						t_macho32_seg;
-typedef struct			s_macho32_sect {
+typedef struct s_macho32_sect {
 	char				sectname[16];
 	char				segname[16];
 	unsigned int		addr;
@@ -137,7 +137,7 @@ typedef struct			s_macho32_sect {
 	unsigned int		reserved1;
 	unsigned int		reserved2;
 }						t_macho32_sect;
-typedef struct			s_macho32 {
+typedef struct s_macho32 {
 	t_macho32_hdr		hdr;
 	unsigned int		text_sect;
 	unsigned int		bss_sect;

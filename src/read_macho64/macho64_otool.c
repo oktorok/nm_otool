@@ -12,8 +12,8 @@
 
 #include "ft_otool.h"
 
-static void			check_sections(unsigned char *content_file,
-								unsigned long offset)
+static void	check_sections(unsigned char *content_file,
+						unsigned long offset)
 {
 	unsigned int	j;
 	t_macho64_seg	segment;
@@ -23,19 +23,20 @@ static void			check_sections(unsigned char *content_file,
 	j = -1;
 	while (++j < segment.nsects)
 	{
-		section = (t_macho64_sect *)(content_file + offset + sizeof(segment) +
-									sizeof(section) * j);
+		section = (t_macho64_sect *)(content_file + offset + sizeof(segment)
+				+ sizeof(section) * j);
 		if (!ft_strcmp(section->sectname, "__text"))
 		{
 			ft_printf("Content of (%s, %s):", section->segname,
-					section->sectname);
-			print_section(content_file + section->offset, section->size, X64);
+				section->sectname);
+			print_section(content_file + section->offset,
+				section->size, X64, section->offset);
 		}
 	}
 }
 
 static t_macho64	find_text_section(t_macho64 macho,
-									unsigned char *content_file)
+							unsigned char *content_file)
 {
 	unsigned int	i;
 	t_macho64_seg	loadc;
@@ -53,7 +54,7 @@ static t_macho64	find_text_section(t_macho64 macho,
 	return (macho);
 }
 
-void				macho64(unsigned char *content_file)
+void	macho64(unsigned char *content_file)
 {
 	t_macho64	macho;
 

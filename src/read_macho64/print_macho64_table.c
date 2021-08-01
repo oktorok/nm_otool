@@ -12,9 +12,9 @@
 
 #include "ft_nm.h"
 
-static void		print_macho_symbol(t_sort symbol, t_macho64 macho)
+static void	print_macho_symbol(t_sort symbol, t_macho64 macho)
 {
-	char type;
+	char	type;
 
 	type = select_macho64_nmtype(*(t_macho64_sym *)symbol.sym, macho);
 	if (type == 'U')
@@ -23,8 +23,8 @@ static void		print_macho_symbol(t_sort symbol, t_macho64 macho)
 		ft_printf("%016lx %c %s\n", symbol.value, type, symbol.name);
 }
 
-void			print_macho64_table(t_macho64 macho, t_sort *sort,
-							t_macho64_symtab symtab)
+void	print_macho64_table(t_macho64 macho, t_sort *sort,
+					t_macho64_symtab symtab)
 {
 	unsigned int		i;
 

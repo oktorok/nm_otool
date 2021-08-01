@@ -12,22 +12,22 @@
 
 #include "ft_nm.h"
 
-static void		fill_sections(t_pe32 *pe32, unsigned char *content_file)
+static void	fill_sections(t_pe32 *pe32, unsigned char *content_file)
 {
 	unsigned short	i;
 	unsigned long	offset;
 	char			*name;
 
-	offset = pe32->doshdr.lfanew + 4 + sizeof(t_pe32_coffhdr) +
-		pe32->coffhdr.size_opthdr;
+	offset = pe32->doshdr.lfanew + 4 + sizeof(t_pe32_coffhdr)
+		+ pe32->coffhdr.size_opthdr;
 	i = 0;
 	pe32->data_sect = -1;
 	pe32->text_sect = -1;
 	pe32->bss_sect = -1;
 	while (i < pe32->coffhdr.nsect)
 	{
-		name = (char *)(*(t_pe32_section *)(content_file + offset + i *
-									sizeof(t_pe32_section))).name;
+		name = (char *)(*(t_pe32_section *)(content_file + offset + i
+					* sizeof(t_pe32_section))).name;
 		if (!ft_strcmp(".text", name))
 			pe32->text_sect = i + 1;
 		else if (!ft_strcmp(".data", name))
@@ -49,13 +49,13 @@ static t_pe32	fill_pe32(unsigned char *content_file)
 	if (!pe32.coffhdr.nsymbols)
 		nm_error(ERROR_NOSYMB);
 	pe32.symboltable = content_file + pe32.coffhdr.offsymtable;
-	pe32.strtable = content_file + pe32.coffhdr.offsymtable +
-		pe32.coffhdr.nsymbols * 18;
+	pe32.strtable = content_file + pe32.coffhdr.offsymtable
+		+ pe32.coffhdr.nsymbols * 18;
 	fill_sections(&pe32, content_file);
 	return (pe32);
 }
 
-void			pe32(unsigned char *content_file)
+void	pe32(unsigned char *content_file)
 {
 	t_pe32	pe32;
 	t_sort	*sort;
