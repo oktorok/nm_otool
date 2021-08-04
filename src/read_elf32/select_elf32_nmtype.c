@@ -12,6 +12,16 @@
 
 #include "ft_nm.h"
 
+static char	select_elf32_nmtype3(t_sort sort)
+{
+	unsigned short	shndx;
+
+	shndx = ((t_elf32_symb *)sort.sym)->shndx;
+	if (shndx == SHN_UNDEF)
+		return ('U');
+	return ('?');
+}
+
 static char	select_elf32_nmtype2(t_sort sort, t_elf32 elf)
 {
 	unsigned short	shndx;
@@ -38,17 +48,7 @@ static char	select_elf32_nmtype2(t_sort sort, t_elf32 elf)
 			return ('R');
 		return ('r');
 	}
-	return (select_elf32_nmtype3(sort, elf));
-}
-
-static char	select_elf32_nmtype3(t_sort sort, t_elf32 elf)
-{
-	unsigned short	shndx;
-
-	shndx = ((t_elf32_symb *)sort.sym)->shndx;
-	if (shndx == SHN_UNDEF)
-		return ('U');
-	return ('?');
+	return (select_elf32_nmtype3(sort));
 }
 
 char	select_elf32_nmtype(t_sort sort, t_elf32 elf)

@@ -24,7 +24,7 @@ static unsigned char	*read_file(char *filename, size_t *filesize)
 	fstat(fd, &stat);
 	*filesize = stat.st_size;
 	content_file = mmap(0, *filesize, PROT_READ,
-			MAP_PRIVATE, fd, 0));
+			MAP_PRIVATE, fd, 0);
 	if (content_file == MAP_FAILED)
 		nm_error("ERROR_ALLOC");
 	close(fd);

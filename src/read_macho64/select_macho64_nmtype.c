@@ -55,5 +55,5 @@ char	select_macho64_nmtype(t_macho64_sym symbol, t_macho64 macho)
 			return ('D');
 		return ('d');
 	}
-	return (select_macho32_nmtype2(symbol, macho));
+	return (select_macho64_nmtype2(symbol, macho));
 }
