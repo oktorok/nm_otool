@@ -21,6 +21,14 @@ void	swap_value(t_sort *a, t_sort *b)
 	*b = tmp;
 }
 
+int	ft_max_sort(int a, int b)
+{
+	if (a < b)
+		return 1;
+	else
+		return 0;
+}
+
 int	strcmp_onlyalph(const char *s1, const char *s2)
 {
 	int				j;
@@ -43,4 +51,12 @@ int	strcmp_onlyalph(const char *s1, const char *s2)
 			return (ft_tolower(s1[j]) - ft_tolower(s2[i]));
 	}
 	return (ft_tolower(s1[j]) - ft_tolower(s2[i]));
+}
+
+int	strcmp_onlyalph_reverse(const char *s1, const char *s2)
+{
+	int	n;
+
+	n = strcmp_onlyalph(s1, s2);
+	return (n * -1);
 }

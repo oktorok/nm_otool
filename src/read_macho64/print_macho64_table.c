@@ -12,23 +12,32 @@
 
 #include "ft_nm.h"
 
-static void	print_macho_symbol(t_sort symbol, t_macho64 macho)
+static void	print_macho_symbol(t_sort symbol, t_macho64 macho, char *filename)
 {
 	char	type;
 
 	type = select_macho64_nmtype(*(t_macho64_sym *)symbol.sym, macho);
+	if (get_flags("-print-file-name"))
+	{
+		if (type == 'U')
+			ft_printf("%s: %18c %s\n", filename, type, symbol.name);
+		else if (type)
+			ft_printf("%s: %016lx %c %s\n", filename, symbol.value, type, symbol.name);
+		return ;
+	}
 	if (type == 'U')
 		ft_printf("%18c %s\n", type, symbol.name);
 	else if (type)
 		ft_printf("%016lx %c %s\n", symbol.value, type, symbol.name);
+
 }
 
 void	print_macho64_table(t_macho64 macho, t_sort *sort,
-					t_macho64_symtab symtab)
+			    t_macho64_symtab symtab, char *filename)
 {
 	unsigned int		i;
 
 	i = -1;
 	while (++i < symtab.nsyms)
-		print_macho_symbol(sort[i], macho);
+		print_macho_symbol(sort[i], macho, filename);
 }

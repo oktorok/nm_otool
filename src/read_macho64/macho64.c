@@ -60,7 +60,7 @@ static t_macho64	fill_macho(unsigned char *content_file)
 }
 
 static int	find_macho_symboltable(t_macho64 macho,
-							unsigned char *content_file)
+				       unsigned char *content_file, char *filename)
 {
 	unsigned int	i;
 	unsigned long	offset;
@@ -79,7 +79,7 @@ static int	find_macho_symboltable(t_macho64 macho,
 		{
 			sort = prepare_macho64_sort(
 					*(t_macho64_symtab *)loadc, content_file);
-			print_macho64_table(macho, sort, *(t_macho64_symtab *)loadc);
+			print_macho64_table(macho, sort, *(t_macho64_symtab *)loadc, filename);
 			sym_check += 1;
 			free(sort);
 		}
@@ -88,13 +88,15 @@ static int	find_macho_symboltable(t_macho64 macho,
 	return (sym_check);
 }
 
-void	macho64(unsigned char *content_file)
+void	macho64(unsigned char *content_file, char *filename)
 {
 	t_macho64	macho;
 	int			sym_check;
 
 	macho = fill_macho(content_file);
-	sym_check = find_macho_symboltable(macho, content_file);
+	sym_check = find_macho_symboltable(macho, content_file, filename);
 	if (!sym_check)
 		nm_error(ERROR_NOSYMB);
+	if (get_flags("-print-file-name"))
+		free(filename);
 }

@@ -33,11 +33,11 @@ static unsigned char	*read_file(char *filename, size_t *filesize)
 
 int	main(int argn, char **argv)
 {
-	int				i;
 	unsigned char	*content_file;
 	size_t			filesize;
 
-	if (argn < 2)
+	argv = set_flags(argv, &argn);
+	if (!*argv)
 	{
 		content_file = read_file("a.out", &filesize);
 		if (!choose_format(content_file, "a.out"))
@@ -45,16 +45,16 @@ int	main(int argn, char **argv)
 	}
 	else
 	{
-		i = 0;
-		while (++i < argn)
+		while (*argv)
 		{
 			if (argn > 2)
-				ft_printf("\n%s:\n", argv[i]);
-			content_file = read_file(argv[i], &filesize);
-			if (!choose_format(content_file, argv[i]))
+				ft_printf("\n%s:\n", *argv);
+			content_file = read_file(*argv, &filesize);
+			if (!choose_format(content_file, *argv))
 				nm_error(ERROR_FORMAT);
 			if (munmap(content_file, filesize))
 				nm_error(ERROR_FREE);
+			argv++;
 		}
 	}
 	return (0);

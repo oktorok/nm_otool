@@ -61,7 +61,7 @@ int	choose_format(unsigned char *content_file, char *filename)
 	else if (format == ARCH)
 		ret = choose_arch_format(content_file, filename);
 	else if (format == MACHO64)
-		macho64(content_file);
+		macho64(content_file, filename);
 	else if (format == MACHO32)
 		macho32(content_file);
 	else if (format == PE)

@@ -84,15 +84,21 @@ char				select_macho32_nmtype(t_macho32_sym symbol,
 						t_macho32 macho);
 t_sort				*prepare_macho32_sort(t_macho32_symtab symtab,
 						unsigned char *content_file);
-void				macho64(unsigned char *content_file);
+void				macho64(unsigned char *content_file, char *filename);
 void				print_macho64_table(t_macho64 macho, t_sort *sort,
-						t_macho64_symtab symtab);
+						    t_macho64_symtab symtab, char *filename);
 char				select_macho64_nmtype(t_macho64_sym symbol,
-						t_macho64 macho);
+						      t_macho64 macho);
 t_sort				*prepare_macho64_sort(t_macho64_symtab symtab,
 						unsigned char *content_file);
 void				pe32(unsigned char *content_file);
 t_sort				*prepare_pe32_sort(t_pe32 pe32);
 void				print_pe32_table(t_pe32 pe32, t_sort *sort);
 char				select_pe32_nmtype(t_pe32_symbol symbol, t_pe32 pe32);
+int					get_flags(char *f);
+char				**set_flags(char **argv, int *argn);
+int					strcmp_onlyalph_reverse(const char *s1, const char *s2);
+t_sort				*order_objects_offset(t_sort *sort, unsigned long objnum);
+int				ft_max_sort(int a, int b);
+
 #endif
