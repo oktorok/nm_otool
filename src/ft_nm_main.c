@@ -31,12 +31,44 @@ static unsigned char	*read_file(char *filename, size_t *filesize)
 	return (content_file);
 }
 
+static void	print_help_message(void)
+{
+	ft_printf("USAGE: nm [options] <input files>\n\n \
+OPTIONS:\n \
+\t-reverse-sort: Sort in reverse order\n \
+\t-print-file-name: Precede each symbol with the object file it came from\n");
+}
+
+static void	loop_resources(char **argv, int argn)
+{
+	unsigned char	*content_file;
+	size_t		filesize;
+
+	while (*argv)
+	{
+		if (argn > 2)
+			ft_printf("\n%s:\n", *argv);
+		content_file = read_file(*argv, &filesize);
+		if (!choose_format(content_file, *argv))
+			nm_error(ERROR_FORMAT);
+		if (munmap(content_file, filesize))
+			nm_error(ERROR_FREE);
+		argv++;
+	}
+	return ;
+}
+
 int	main(int argn, char **argv)
 {
 	unsigned char	*content_file;
 	size_t			filesize;
 
 	argv = set_flags(argv, &argn);
+	if (get_flags("-help"))
+	{
+		print_help_message();
+		return(0);
+	}
 	if (!*argv)
 	{
 		content_file = read_file("a.out", &filesize);
@@ -44,18 +76,6 @@ int	main(int argn, char **argv)
 			nm_error(ERROR_FORMAT);
 	}
 	else
-	{
-		while (*argv)
-		{
-			if (argn > 2)
-				ft_printf("\n%s:\n", *argv);
-			content_file = read_file(*argv, &filesize);
-			if (!choose_format(content_file, *argv))
-				nm_error(ERROR_FORMAT);
-			if (munmap(content_file, filesize))
-				nm_error(ERROR_FREE);
-			argv++;
-		}
-	}
+		loop_resources(argv, argn);
 	return (0);
 }

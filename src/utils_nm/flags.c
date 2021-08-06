@@ -12,7 +12,7 @@
 
 #include  "ft_nm.h"
 
-static char	g_allflags[][20] = {"-reverse-sort", "-print-file-name", "-c", ""};
+static char	g_allflags[][20] = {"-reverse-sort", "-print-file-name", "-help", ""};
 static int	g_flags = 0;
 
 char	**set_flags(char **argv, int *argn)
