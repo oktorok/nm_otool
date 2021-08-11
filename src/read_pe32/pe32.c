@@ -55,13 +55,15 @@ static t_pe32	fill_pe32(unsigned char *content_file)
 	return (pe32);
 }
 
-void	pe32(unsigned char *content_file)
+int	pe32(unsigned char *content_file, char *filename)
 {
 	t_pe32	pe32;
 	t_sort	*sort;
 
 	pe32 = fill_pe32(content_file);
 	sort = prepare_pe32_sort(pe32);
-	print_pe32_table(pe32, sort);
+	print_pe32_table(pe32, sort, filename);
 	free(sort);
+	filename = NULL;
+	return (1);
 }

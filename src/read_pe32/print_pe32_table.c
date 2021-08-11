@@ -12,11 +12,13 @@
 
 #include "ft_nm.h"
 
-static void	print_pe_symbol(t_sort symbol, t_pe32 pe32)
+static void	print_pe_symbol(t_sort symbol, t_pe32 pe32, char *filename)
 {
 	char	type;
 
 	type = select_pe32_nmtype(*(t_pe32_symbol *)symbol.sym, pe32);
+	if (get_flags("-print-file-name"))
+		ft_printf("%s: ", filename);
 	if (type == 'U')
 	{
 		if (((t_pe32_symbol *)symbol.sym)->name.offset[0])
@@ -38,11 +40,11 @@ static void	print_pe_symbol(t_sort symbol, t_pe32 pe32)
 		ft_printf("%08x %c %s\n", symbol.value, type, symbol.name);
 }
 
-void	print_pe32_table(t_pe32 pe32, t_sort *sort)
+void	print_pe32_table(t_pe32 pe32, t_sort *sort, char *filename)
 {
 	unsigned int	i;
 
 	i = -1;
 	while (++i < pe32.coffhdr.nsymbols)
-		print_pe_symbol(sort[i], pe32);
+		print_pe_symbol(sort[i], pe32, filename);
 }

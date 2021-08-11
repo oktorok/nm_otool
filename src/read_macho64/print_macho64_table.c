@@ -18,13 +18,7 @@ static void	print_macho_symbol(t_sort symbol, t_macho64 macho, char *filename)
 
 	type = select_macho64_nmtype(*(t_macho64_sym *)symbol.sym, macho);
 	if (get_flags("-print-file-name"))
-	{
-		if (type == 'U')
-			ft_printf("%s: %18c %s\n", filename, type, symbol.name);
-		else if (type)
-			ft_printf("%s: %016lx %c %s\n", filename, symbol.value, type, symbol.name);
-		return ;
-	}
+		ft_printf("%s: ", filename);
 	if (type == 'U')
 		ft_printf("%18c %s\n", type, symbol.name);
 	else if (type)

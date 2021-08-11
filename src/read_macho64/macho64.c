@@ -88,7 +88,7 @@ static int	find_macho_symboltable(t_macho64 macho,
 	return (sym_check);
 }
 
-void	macho64(unsigned char *content_file, char *filename)
+int	macho64(unsigned char *content_file, char *filename)
 {
 	t_macho64	macho;
 	int			sym_check;
@@ -97,6 +97,5 @@ void	macho64(unsigned char *content_file, char *filename)
 	sym_check = find_macho_symboltable(macho, content_file, filename);
 	if (!sym_check)
 		nm_error(ERROR_NOSYMB);
-	if (get_flags("-print-file-name"))
-		free(filename);
+	return (1);
 }

@@ -46,7 +46,7 @@ static void	loop_resources(char **argv, int argn)
 
 	while (*argv)
 	{
-		if (argn > 2)
+		if (argn > 2 && !get_flags("-print-file-name"))
 			ft_printf("\n%s:\n", *argv);
 		content_file = read_file(*argv, &filesize);
 		if (!choose_format(content_file, *argv))

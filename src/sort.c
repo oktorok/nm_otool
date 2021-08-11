@@ -63,8 +63,10 @@ static void	quicksort_num(t_sort *sort, unsigned long start_end[2],
 t_sort	*order_symb_alpha(t_sort *sort, unsigned long symlen, char slash)
 {
 	if (get_flags("-reverse-sort"))
-		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlyalph_reverse);
+		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlylowalph_reverse);
 	else if (!slash)
+		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlylowalph);
+	else if (slash == NO_SLASH_ALPHA)
 		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlyalph);
 	else
 		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, ft_strcmp);

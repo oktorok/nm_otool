@@ -57,7 +57,7 @@ static void	print_filename_gnu(unsigned char *content_file,
 	ft_putendl(":");
 }
 
-void	arch_gnu(unsigned char *content_file)
+void	arch_gnu(unsigned char *content_file, char *filename)
 {
 	t_arch			arch;
 	unsigned int	offset;
@@ -75,4 +75,5 @@ void	arch_gnu(unsigned char *content_file)
 		}
 		j++;
 	}
+	filename = NULL;
 }

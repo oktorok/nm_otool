@@ -36,6 +36,6 @@ t_sort	*prepare_elf32_sort(t_elf32 elf, unsigned char *content_file,
 			i
 		};
 	}
-	sort = order_symb_alpha(sort, symlen, NO_SLASH);
+	sort = order_symb_alpha(sort, symlen, SLASH);
 	return (sort);
 }

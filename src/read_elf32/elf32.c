@@ -55,7 +55,7 @@ static t_elf32	fill_elf(unsigned char *content_file)
 }
 
 static void	find_elf_symboltable(t_elf32 elf,
-							unsigned char *content_file)
+				     unsigned char *content_file, char *filename)
 {
 	unsigned long	i;
 	t_sort			*sort;
@@ -68,18 +68,18 @@ static void	find_elf_symboltable(t_elf32 elf,
 		{
 			symlen = elf.shdr[i].size / elf.shdr[i].entsize;
 			sort = prepare_elf32_sort(elf, content_file, i, symlen);
-			print_elf32_table(elf, sort, symlen);
+			print_elf32_table(elf, sort, symlen, filename);
 			free(sort);
 		}
 		i++;
 	}
 }
 
-void	elf32(unsigned char *content_file)
+void	elf32(unsigned char *content_file, char *filename)
 {
 	t_elf32	elf;
 
 	elf = fill_elf(content_file);
 	fill_elf_specialsegments(&elf, content_file);
-	find_elf_symboltable(elf, content_file);
+	find_elf_symboltable(elf, content_file, filename);
 }

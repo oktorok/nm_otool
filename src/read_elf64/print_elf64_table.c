@@ -12,7 +12,7 @@
 
 #include "ft_nm.h"
 
-static void	print_elf_symbol(t_sort sort, t_elf64 elf)
+static void	print_elf_symbol(t_sort sort, t_elf64 elf, char *filename)
 {
 	t_elf64_symb	sym;
 	int				type;
@@ -22,6 +22,8 @@ static void	print_elf_symbol(t_sort sort, t_elf64 elf)
 	type = sym.info & 0xf;
 	if (type != STT_SECTION && type != STT_FILE && *sort.name)
 	{
+		if (get_flags("-print-file-name"))
+			ft_printf("%s: ", filename);
 		t = select_elf64_nmtype(sort, elf);
 		if (sym.shndx != SHN_UNDEF)
 			ft_printf("%016lx %c %s\n", sort.value, t, sort.name);
@@ -31,14 +33,14 @@ static void	print_elf_symbol(t_sort sort, t_elf64 elf)
 }
 
 void	print_elf64_table(t_elf64 elf, t_sort *sorted,
-						unsigned long symlen)
+			  unsigned long symlen, char *filename)
 {
 	unsigned long	i;
 
 	i = 0;
 	while (i < symlen)
 	{
-		print_elf_symbol(sorted[i], elf);
+		print_elf_symbol(sorted[i], elf, filename);
 		i++;
 	}
 }

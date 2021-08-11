@@ -40,6 +40,8 @@ static void	print_object(t_arch_ranlib ranlib, unsigned char *content_file,
 	offset += ft_atoi((char *)content_file + offset + 3);
 	if (!choose_format(content_file + offset + 60, filename))
 		ft_printf(ERROR_FORMAT);
+	if (get_flags("-print-file-name"))
+		free(filename);
 }
 
 static t_sort	*prepare_archbsd_sort(t_arch arch)
@@ -85,4 +87,5 @@ void	arch_bsd(unsigned char *content_file, char *filename)
 		else
 			i++;
 	}
+	free(sort);
 }
