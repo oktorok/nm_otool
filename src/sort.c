@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 19:06:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/24 04:33:48 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/12 01:52:12 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ static void	quicksort_num(t_sort *sort, unsigned long start_end[2],
 
 t_sort	*order_symb_alpha(t_sort *sort, unsigned long symlen, char slash)
 {
-	if (get_flags("-reverse-sort"))
-		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlylowalph_reverse);
-	else if (!slash)
+	if (!slash)
 		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlylowalph);
 	else if (slash == NO_SLASH_ALPHA)
 		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlyalph);

@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 23:03:51 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/23 17:13:01 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/11 21:09:54 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ t_sort	*prepare_elf64_sort(t_elf64 elf, unsigned char *content_file,
 			i
 		};
 	}
-	sort = order_symb_alpha(sort, symlen, SLASH);
+	sort = order_symb_alpha(sort, symlen, NO_SLASH);
 	return (sort);
 }

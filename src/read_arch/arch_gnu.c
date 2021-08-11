@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 19:21:15 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/25 04:51:19 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/12 01:49:19 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,30 @@ static t_arch	fill_arch(unsigned char *content_file)
 	return (arch);
 }
 
-static void	print_filename_gnu(unsigned char *content_file,
-				unsigned char *strtable)
+static char	*print_filename_gnu(unsigned char *content_file,
+								unsigned char *strtable, char *filename)
 {
 	unsigned char	*name;
+	char			*name_alloc;
+	int		i;
 
-	ft_putendl("");
 	if (*content_file == '/')
 		name = strtable + ft_atoi((char *)content_file + 1);
 	else
 		name = content_file;
-	while (*name != '/')
-		write(1, name++, 1);
-	ft_putendl(":");
+	i = 0;
+	while (name[i] != '/')
+		i++;
+	if (!get_flags("-print-file-name"))
+	{
+		ft_putendl("");
+		write(1, name, i);
+		ft_putendl(":");
+		return (filename);
+	}
+	name_alloc = ft_memalloc(i + ft_strlen(filename) + 1);
+	ft_asprintf(&name_alloc, "%s:%s", filename, ft_memcpy(name_alloc, name, i));
+	return (name_alloc);
 }
 
 void	arch_gnu(unsigned char *content_file, char *filename)
@@ -62,6 +73,7 @@ void	arch_gnu(unsigned char *content_file, char *filename)
 	t_arch			arch;
 	unsigned int	offset;
 	unsigned int	j;
+	char			*filename2;
 
 	arch = fill_arch(content_file);
 	j = 0;
@@ -70,10 +82,11 @@ void	arch_gnu(unsigned char *content_file, char *filename)
 		offset = big_to_lit(arch.object.offset[j]);
 		if (!j || offset != big_to_lit(arch.object.offset[j - 1]))
 		{
-			print_filename_gnu(content_file + offset, arch.strtable);
-			choose_format(content_file + offset + 60, NULL);
+			filename2 = print_filename_gnu(content_file + offset, arch.strtable, filename);
+			choose_format(content_file + offset + 60, filename2);
+			if (get_flags("-print-file-name"))
+				free(filename2);
 		}
 		j++;
 	}
-	filename = NULL;
 }

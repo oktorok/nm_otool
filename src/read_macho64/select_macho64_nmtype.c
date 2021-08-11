@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 03:43:39 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/25 23:28:01 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/11 21:00:24 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,10 @@ static char	select_macho64_nmtype2(t_macho64_sym symbol, t_macho64 macho)
 char	select_macho64_nmtype(t_macho64_sym symbol, t_macho64 macho)
 {
 	int	type;
-	int	debug;
 
 	if (symbol.type & 0xe0)
 		return ('\0');
 	type = symbol.type & N_TYPE;
-	debug = symbol.type & N_STAB;
 	if (type == N_UNDF)
 		return ('U');
 	if (type == N_ABS)

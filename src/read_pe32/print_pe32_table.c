@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 04:53:02 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/23 21:01:42 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/12 01:56:53 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,10 @@ void	print_pe32_table(t_pe32 pe32, t_sort *sort, char *filename)
 
 	i = -1;
 	while (++i < pe32.coffhdr.nsymbols)
-		print_pe_symbol(sort[i], pe32, filename);
+	{
+		if (get_flags("-reverse-sort"))
+			print_pe_symbol(sort[pe32.coffhdr.nsymbols - i - 1], pe32, filename);
+		else
+			print_pe_symbol(sort[i], pe32, filename);
+	}
 }

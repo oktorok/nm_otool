@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 19:09:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/25 04:30:04 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/12 01:55:02 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void	print_elf32_table(t_elf32 elf, t_sort *sorted,
 	i = 0;
 	while (i < symlen)
 	{
-		print_elf_symbol(sorted[i], elf, filename);
+		if (get_flags("-reverse-sort"))
+			print_elf_symbol(sorted[symlen - i - 1], elf, filename);
+		else
+			print_elf_symbol(sorted[i], elf, filename);
 		i++;
 	}
 }

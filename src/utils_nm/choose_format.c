@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 15:40:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/27 02:55:15 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/11 21:00:59 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ int	choose_format(unsigned char *content_file, char *filename)
 {
 	int	format;
 	int	ret;
-	int	i;
 
-	i = 0;
 	format = check_magic(content_file);
 	ret = 1;
 	ret = g_format_func[format](content_file, filename);

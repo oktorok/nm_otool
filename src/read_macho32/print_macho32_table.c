@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 11:55:56 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/25 18:27:03 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/12 01:55:58 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,10 @@ void	print_macho32_table(t_macho32 macho, t_sort *sort,
 
 	i = -1;
 	while (++i < symtab.nsyms)
-		print_macho_symbol(sort[i], macho, filename);
+	{
+		if (get_flags("-reverse-sort"))
+			print_macho_symbol(sort[symtab.nsyms - i - 1], macho, filename);
+		else
+			print_macho_symbol(sort[i], macho, filename);
+	}
 }
