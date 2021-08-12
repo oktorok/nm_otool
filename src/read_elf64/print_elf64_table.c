@@ -6,7 +6,7 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 19:09:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2021/08/12 01:57:26 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/12 02:34:35 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ static void	print_elf_symbol(t_sort sort, t_elf64 elf, char *filename)
 			ft_printf("%s: ", filename);
 		t = select_elf64_nmtype(sort, elf);
 		if (sym.shndx != SHN_UNDEF)
-			ft_printf("%016lx %c %s\n", sort.value, t, sort.name);
+		{
+			ft_printf("%016lx ", sort.value);
+			if (get_flags("-print-size") && sym.size)
+				ft_printf("%016lx ", sym.size);
+			ft_printf("%c %s\n", t, sort.name);
+		}
 		else
 			ft_printf("%18c %s\n", t, sort.name);
 	}

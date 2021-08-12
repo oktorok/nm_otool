@@ -6,13 +6,13 @@
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 19:45:32 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/26 18:55:15 by jagarcia         ###   ########.fr       */
+/*   Updated: 2021/08/12 02:29:10 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include  "ft_nm.h"
 
-static char	g_allflags[][20] = {"-reverse-sort", "-print-file-name", "-help", ""};
+static char	g_allflags[][20] = {"-reverse-sort", "-print-file-name", "-help", "-no-sort", "-print-size", ""};
 static int	g_flags = 0;
 
 char	**set_flags(char **argv, int *argn)
