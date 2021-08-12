@@ -66,6 +66,8 @@ int	choose_format(unsigned char *content_file, char *filename)
 	int	ret;
 
 	format = check_magic(content_file);
+	if (format < 0)
+		return (0);
 	ret = 1;
 	ret = g_format_func[format](content_file, filename);
 	return (ret);

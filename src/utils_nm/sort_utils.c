@@ -76,11 +76,3 @@ int	strcmp_onlylowalph(const char *s1, const char *s2)
 	}
 	return (ft_tolower(s1[j]) - ft_tolower(s2[i]));
 }
-
-int	strcmp_onlylowalph_reverse(const char *s1, const char *s2)
-{
-	int	n;
-
-	n = strcmp_onlylowalph(s1, s2);
-	return (n * -1);
-}

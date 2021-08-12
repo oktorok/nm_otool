@@ -14,8 +14,14 @@
 
 static void	print_name(char *name, int *offset)
 {
+	int	i;
+
+	i = 0;
 	if (offset[0])
-		write(1, name, 8);
+	{
+		while (i != 8 && name[i])
+			write(1, name + i++, 1);
+	}
 	else
 		ft_putstr(name);
 	ft_putendl("");

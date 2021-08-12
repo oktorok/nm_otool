@@ -47,6 +47,39 @@ typedef struct s_pe32_coffhdr {
 	unsigned short	size_opthdr;
 	unsigned short	desc;
 }					t_pe32_coffhdr;
+typedef struct s_pe32_opthdr {
+	unsigned short	magic;
+	unsigned char	majorlinkerversion;
+	unsigned char	minorlinkerversion;
+	unsigned int	sizeofcode;
+	unsigned int	sizeofinitializeddata;
+	unsigned int	sizeofuninitializeddata;
+	unsigned int	addressofentrypoint;
+	unsigned int	baseofcode;
+	unsigned int	baseofdata;
+	unsigned int	imagebase;
+	unsigned int	sectionalignment;
+	unsigned int	filealignment;
+	unsigned short	majoroperatingsystemversion;
+	unsigned short	minoroperatingsystemversion;
+	unsigned short	majorimageversion;
+	unsigned short	minorimageversion;
+	unsigned short	majorsubsystemversion;
+	unsigned short	minorsubsystemversion;
+	unsigned int	reserved1;
+	unsigned int	sizeofimage;
+	unsigned int	sizeofheaders;
+	unsigned int	checksum;
+	unsigned short	subsystem;
+	unsigned short	dllcharacteristics;
+	unsigned int	sizeofstackreserve;
+	unsigned int	sizeofstackcommit;
+	unsigned int	sizeofheapreserve;
+	unsigned int	sizeofheapcommit;
+	unsigned int	loaderflags;
+	unsigned int	numberofrvaandsizes;
+	unsigned char	datadirectory[144];
+}					t_pe32_opthdr;
 typedef struct s_pe32_section{
 	unsigned char	name[8];
 	unsigned int	virtualsize;
@@ -74,6 +107,8 @@ typedef struct s_pe32_symbol {
 typedef struct s_pe32 {
 	t_pe32_doshdr	doshdr;
 	t_pe32_coffhdr	coffhdr;
+	t_pe32_opthdr	opthdr;
+	t_pe32_section	*sections;
 	unsigned char	*strtable;
 	void			*symboltable;
 	unsigned int	text_sect;

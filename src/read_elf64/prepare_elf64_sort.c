@@ -12,6 +12,15 @@
 
 #include "ft_nm.h"
 
+t_sort	*check_order(t_sort *sort, unsigned long symlen)
+{
+	if (get_flags("-mac-format"))
+		sort = order_symb_alpha(sort, symlen, SLASH);
+	else
+		sort = order_symb_alpha(sort, symlen, NO_SLASH);
+	return (sort);
+}
+
 t_sort	*prepare_elf64_sort(t_elf64 elf, unsigned char *content_file,
 							unsigned long st_pos, unsigned long symlen)
 {
@@ -36,6 +45,6 @@ t_sort	*prepare_elf64_sort(t_elf64 elf, unsigned char *content_file,
 			i
 		};
 	}
-	sort = order_symb_alpha(sort, symlen, NO_SLASH);
+	sort = check_order(sort, symlen);
 	return (sort);
 }

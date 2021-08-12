@@ -98,7 +98,6 @@ void				print_pe32_table(t_pe32 pe32, t_sort *sort, char *filename);
 char				select_pe32_nmtype(t_pe32_symbol symbol, t_pe32 pe32);
 int					get_flags(char *f);
 char				**set_flags(char **argv, int *argn);
-int					strcmp_onlylowalph_reverse(const char *s1, const char *s2);
 int					strcmp_onlyalph(const char *s1, const char *s2);
 t_sort				*order_objects_offset(t_sort *sort, unsigned long objnum);
 int					ft_max_sort(int a, int b);
