@@ -24,9 +24,9 @@ void	swap_value(t_sort *a, t_sort *b)
 int	ft_max_sort(int a, int b)
 {
 	if (a < b)
-		return 1;
+		return (1);
 	else
-		return 0;
+		return (0);
 }
 
 int	strcmp_onlyalph(const char *s1, const char *s2)

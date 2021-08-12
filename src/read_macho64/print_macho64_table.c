@@ -22,8 +22,13 @@ static void	print_macho_symbol(t_sort symbol, t_macho64 macho, char *filename)
 	if (type == 'U')
 		ft_printf("%18c %s\n", type, symbol.name);
 	else if (type)
-		ft_printf("%016lx %c %s\n", symbol.value, type, symbol.name);
-
+	{
+		if (get_flags("-print-size"))
+			ft_printf("%016lx %016lx %c %s\n", symbol.value, 0, type,
+				symbol.name);
+		else
+			ft_printf("%016lx %c %s\n", symbol.value, type, symbol.name);
+	}
 }
 
 void	print_macho64_table(t_macho64 macho, t_sort *sort,

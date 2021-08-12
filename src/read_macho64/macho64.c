@@ -79,7 +79,8 @@ static int	find_macho_symboltable(t_macho64 macho,
 		{
 			sort = prepare_macho64_sort(
 					*(t_macho64_symtab *)loadc, content_file);
-			print_macho64_table(macho, sort, *(t_macho64_symtab *)loadc, filename);
+			print_macho64_table(macho, sort, *(t_macho64_symtab *)loadc,
+				filename);
 			sym_check += 1;
 			free(sort);
 		}

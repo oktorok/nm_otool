@@ -60,16 +60,17 @@ static void	quicksort_num(t_sort *sort, unsigned long start_end[2],
 	quicksort_num(sort, (unsigned long [2]){j + 2, start_end[1]}, f);
 }
 
-t_sort	*order_symb_alpha(t_sort *sort, unsigned long symlen, char slash)
+t_sort	*order_symb_alpha(t_sort *sort, unsigned long sl, char slash)
 {
 	if (get_flags("-no-sort"))
 		return (sort);
 	if (!slash)
-		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlylowalph);
+		quicksort_alpha(sort, (unsigned long [2]){0, sl - 1},
+			strcmp_onlylowalph);
 	else if (slash == NO_SLASH_ALPHA)
-		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, strcmp_onlyalph);
+		quicksort_alpha(sort, (unsigned long [2]){0, sl - 1}, strcmp_onlyalph);
 	else
-		quicksort_alpha(sort, (unsigned long [2]){0, symlen - 1}, ft_strcmp);
+		quicksort_alpha(sort, (unsigned long [2]){0, sl - 1}, ft_strcmp);
 	return (sort);
 }
 

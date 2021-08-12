@@ -17,12 +17,17 @@ static void	print_macho_symbol(t_sort symbol, t_macho32 macho, char *filename)
 	char	type;
 
 	if (get_flags("-print-file-name"))
-	    ft_printf("%s: ", filename);
+		ft_printf("%s: ", filename);
 	type = select_macho32_nmtype(*(t_macho32_sym *)symbol.sym, macho);
 	if (type == 'U')
 		ft_printf("%10c %s\n", type, symbol.name);
 	else if (type)
-		ft_printf("%08lx %c %s\n", symbol.value, type, symbol.name);
+	{
+		if (get_flags("-print-size"))
+			ft_printf("%08lx %08lx %c %s\n", symbol.value, 0, type, symbol.name);
+		else
+			ft_printf("%08lx %c %s\n", symbol.value, type, symbol.name);
+	}
 }
 
 void	print_macho32_table(t_macho32 macho, t_sort *sort,

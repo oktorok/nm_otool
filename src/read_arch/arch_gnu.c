@@ -47,7 +47,7 @@ static char	*print_filename_gnu(unsigned char *content_file,
 {
 	unsigned char	*name;
 	char			*name_alloc;
-	int		i;
+	int				i;
 
 	if (*content_file == '/')
 		name = strtable + ft_atoi((char *)content_file + 1);
@@ -82,7 +82,8 @@ void	arch_gnu(unsigned char *content_file, char *filename)
 		offset = big_to_lit(arch.object.offset[j]);
 		if (!j || offset != big_to_lit(arch.object.offset[j - 1]))
 		{
-			filename2 = print_filename_gnu(content_file + offset, arch.strtable, filename);
+			filename2 = print_filename_gnu(content_file + offset, arch.strtable,
+					filename);
 			choose_format(content_file + offset + 60, filename2);
 			if (get_flags("-print-file-name"))
 				free(filename2);

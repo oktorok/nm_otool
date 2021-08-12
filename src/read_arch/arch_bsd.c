@@ -46,7 +46,7 @@ static void	print_object(t_arch_ranlib ranlib, unsigned char *content_file,
 
 static t_sort	*prepare_archbsd_sort(t_arch arch)
 {
-	t_sort	*sort;
+	t_sort			*sort;
 	unsigned int	i;
 
 	sort = ft_memalloc(sizeof(t_sort) * arch.objnum);

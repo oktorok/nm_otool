@@ -42,7 +42,7 @@ OPTIONS:\n \
 static void	loop_resources(char **argv, int argn)
 {
 	unsigned char	*content_file;
-	size_t		filesize;
+	size_t			filesize;
 
 	while (*argv)
 	{
@@ -67,7 +67,7 @@ int	main(int argn, char **argv)
 	if (get_flags("-help"))
 	{
 		print_help_message();
-		return(0);
+		return (0);
 	}
 	if (!*argv)
 	{

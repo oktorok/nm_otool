@@ -12,32 +12,37 @@
 
 #include "ft_nm.h"
 
+static void	print_name(char *name, int *offset)
+{
+	if (offset[0])
+		write(1, name, 8);
+	else
+		ft_putstr(name);
+	ft_putendl("");
+}
+
 static void	print_pe_symbol(t_sort symbol, t_pe32 pe32, char *filename)
 {
 	char	type;
+	int		*offset;
 
+	offset = ((t_pe32_symbol *)symbol.sym)->name.offset;
 	type = select_pe32_nmtype(*(t_pe32_symbol *)symbol.sym, pe32);
 	if (get_flags("-print-file-name"))
 		ft_printf("%s: ", filename);
 	if (type == 'U')
 	{
-		if (((t_pe32_symbol *)symbol.sym)->name.offset[0])
-		{
-			ft_printf("%18c ", type);
-			write(1, symbol.name, 8);
-			ft_putendl("");
-		}
-		else
-			ft_printf("%18c %s\n", type, symbol.name);
-	}
-	else if (((t_pe32_symbol *)symbol.sym)->name.offset[0])
-	{
-		ft_printf("%08x %c ", symbol.value, type);
-		write(1, symbol.name, 8);
-		ft_putendl("");
+		ft_printf("%18c ", type);
+		print_name((char *)symbol.name, offset);
 	}
 	else
-		ft_printf("%08x %c %s\n", symbol.value, type, symbol.name);
+	{
+		if (get_flags("-print-size"))
+			ft_printf("%08x %08x %c ", symbol.value, 0, type);
+		else
+			ft_printf("%08x %c ", symbol.value, type);
+		print_name((char *)symbol.name, offset);
+	}
 }
 
 void	print_pe32_table(t_pe32 pe32, t_sort *sort, char *filename)
@@ -48,7 +53,8 @@ void	print_pe32_table(t_pe32 pe32, t_sort *sort, char *filename)
 	while (++i < pe32.coffhdr.nsymbols)
 	{
 		if (get_flags("-reverse-sort"))
-			print_pe_symbol(sort[pe32.coffhdr.nsymbols - i - 1], pe32, filename);
+			print_pe_symbol(sort[pe32.coffhdr.nsymbols - i - 1], pe32,
+				filename);
 		else
 			print_pe_symbol(sort[i], pe32, filename);
 	}
