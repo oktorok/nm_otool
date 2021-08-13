@@ -44,10 +44,11 @@ static t_pe32	fill_pe32(unsigned char *content_file)
 	return (pe32);
 }
 
-void	pe32(unsigned char *content_file)
+int	pe32(unsigned char *content_file)
 {
 	t_pe32	pe32;
 
 	pe32 = fill_pe32(content_file);
 	find_text_section(pe32, content_file);
+	return (1);
 }

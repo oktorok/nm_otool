@@ -1,4 +1,4 @@
-sort_utils.c
-nm_error.c
-choose_format.c
-flags.c
+sort_utils_nm.c
+nm_error_nm.c
+choose_format_nm.c
+flags_nm.c

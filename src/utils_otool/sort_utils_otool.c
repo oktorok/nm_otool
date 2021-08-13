@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_section.c                                    :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <jagarcia@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 19:34:59 by jagarcia          #+#    #+#             */
-/*   Updated: 2020/11/27 02:53:26 by jagarcia         ###   ########.fr       */
+/*   Created: 2020/11/02 19:07:25 by jagarcia          #+#    #+#             */
+/*   Updated: 2020/11/23 21:03:19 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_otool.h"
 
-void	print_section(unsigned char *section, unsigned long size, char bits,
-			unsigned long offset)
+void	swap_value(t_sort *a, t_sort *b)
 {
-	unsigned long	byte;
+	t_sort	tmp;
 
-	byte = 0;
-	while (byte < size)
-	{
-		if (!(byte % 16))
-		{
-			if (bits == X64)
-				ft_printf("\n%016lx        ", byte + offset);
-			else if (bits == X32)
-				ft_printf("\n%08lx        ", byte + offset);
-			else
-				nm_error(ERROR_FORMAT);
-		}
-		ft_printf("%02hhx ", *(section + byte));
-		byte += 1;
-	}
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+int	ft_max_sort(int a, int b)
+{
+	if (a < b)
+		return (1);
+	else
+		return (0);
 }

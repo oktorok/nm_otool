@@ -33,10 +33,14 @@ static unsigned char	*read_file(char *filename, size_t *filesize)
 
 static void	print_help_message(void)
 {
-	ft_printf("USAGE: nm [options] <input files>\n\n \
-OPTIONS:\n \
-\t-reverse-sort: Sort in reverse order\n \
-\t-print-file-name: Precede each symbol with the object file it came from\n");
+	ft_printf("USAGE: ft_nm [options] <input files>\n\n\
+OPTIONS:\n\
+\t-reverse-sort: Sort in reverse order\n\
+\t-print-file-name: Precede each symbol with the object file it came from\n\
+\t-help: print this message\n\
+\t-no-sort: don't apply any kind of sorting to the symbols\n\
+\t-print-size: print the size of the not undefined symbols after the address. Warning: this only works on ELF32 and ELF64 format files, the others will print a size of 0\n\
+\t-mac-format: modify the output format to match the one from mac's nm");
 }
 
 static void	loop_resources(char **argv, int argn)

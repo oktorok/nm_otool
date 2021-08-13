@@ -27,10 +27,10 @@ static void	check_sections(unsigned char *content_file,
 				+ sizeof(section) * j);
 		if (!ft_strcmp(section->sectname, "__text"))
 		{
-			ft_printf("Content of (%s, %s):", section->segname,
+			ft_printf("Contents of (%s,%s) section", section->segname,
 				section->sectname);
 			print_section(content_file + section->offset,
-				section->size, X64, section->offset);
+				section->size, X64, section->addr);
 		}
 	}
 }
@@ -54,10 +54,11 @@ static t_macho64	find_text_section(t_macho64 macho,
 	return (macho);
 }
 
-void	macho64(unsigned char *content_file)
+int	macho64(unsigned char *content_file)
 {
 	t_macho64	macho;
 
 	macho.hdr = *(t_macho64_hdr *)content_file;
 	find_text_section(macho, content_file);
+	return (1);
 }

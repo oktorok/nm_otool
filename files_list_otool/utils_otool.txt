@@ -1,4 +1,5 @@
-nm_error.c
-choose_format.c
-print_section.c
-
+nm_error_otool.c
+choose_format_otool.c
+print_section_otool.c
+flags_otool.c
+sort_utils_otool.c

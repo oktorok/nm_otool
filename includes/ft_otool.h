@@ -46,17 +46,28 @@
 # define X64	0
 # define X32	1
 
+typedef struct s_sort {
+	void			*sym;
+	unsigned char	*name;
+	unsigned long	value;
+	unsigned long	segment;
+	unsigned long	i;
+}					t_sort;
 int					main(int argn, char **argv);
 void				elf64(unsigned char *content_file);
 void				elf32(unsigned char *content_file);
-void				macho64(unsigned char *content_file);
-void				macho32(unsigned char *content_file);
-void				pe32(unsigned char *content_file);
+int				macho64(unsigned char *content_file);
+int				macho32(unsigned char *content_file);
+int				pe32(unsigned char *content_file);
 void				nm_error(char *err);
 int					choose_format(unsigned char *content_file, char *filename);
 void				print_section(unsigned char *section, unsigned long size,
 						char bits, unsigned long offset);
 void				arch_gnu(unsigned char *content_file);
-void				arch_bsd(unsigned char *content_file,
-						char *filename);
+void				arch_bsd(unsigned char *content_file, char *filename);
+int				get_flags(char *f);
+char				**set_flags(char **argv, int *argn);
+t_sort				*order_objects_offset(t_sort *sort, unsigned long objnum);
+void				swap_value(t_sort *a, t_sort *b);
+int				ft_max_sort(int a, int b);
 #endif

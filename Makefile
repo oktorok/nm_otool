@@ -1,7 +1,7 @@
 NAME1 := ft_nm
 NAME2 := ft_otool
 
-.PHONY : all clean fclean re check_libft check_libprintf
+.PHONY : all clean fclean re check_libft check_libprintf set_vpath_1 set_vpath_2
 
 GCC = gcc
 
@@ -31,8 +31,8 @@ FILES_DIR2 := files_list_otool/
 
 FILE_LIST_FULL2 := $(shell ls -d $(FILES_DIR2)*)
 
-FILE_LIST_NOEXT2 := $(basename $(shell ls files_list_otool))
-FILE_LIST_NOEXT2 := $(patsubst %,:$(SRC_DIR)%,$(FILE_LIST_NOEXT2))
+FILE_LIST_NOEXT2 :=$(basename $(shell ls files_list_otool))
+FILE_LIST_NOEXT2 :=$(patsubst %,:$(SRC_DIR)%,$(FILE_LIST_NOEXT2))
 
 SRC2 := $(shell cat $(FILE_LIST_FULL2)| grep "\.c")
 
@@ -62,6 +62,11 @@ MODE = 1
 ifeq ($(MODE), 0)
 
 all:  check_libft check_libftprintf $(NAME1) $(NAME2)
+
+caca:
+	@echo $(SRC2)
+	@echo $(VPATH)
+
 
 $(NAME1): $(OBJ1) $(LIBFT_PATH)$(LIBFT) $(LIBFTPRINTF_PATH)$(LIBFTPRINTF)
 	@$(GCC) $(OBJ1) -L$(LIBFT_PATH) -L$(LIBFTPRINTF_PATH) -lft -lftprintf -o $(NAME1)

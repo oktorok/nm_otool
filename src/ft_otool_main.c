@@ -31,31 +31,47 @@ unsigned char	*read_file(char *filename, size_t *filesize)
 	return (content_file);
 }
 
+static void	print_help_message(void)
+{
+	ft_printf("USAGE: ft_otool [options] <input files>\n\n \
+OPTIONS:\n \
+\t-h: print this message\n");
+}
+
+static void	loop_resources(char **argv)
+{
+	unsigned char	*content_file;
+	size_t			filesize;
+	while (*argv)
+	{
+		content_file = read_file(*argv, &filesize);
+		if (!choose_format(content_file, *argv))
+			nm_error(ERROR_FORMAT);
+		if (munmap(content_file, filesize))
+			nm_error(ERROR_FREE);
+		argv++;
+	}
+}
+
 int	main(int argn, char **argv)
 {
-	int				i;
 	unsigned char	*content_file;
 	size_t			filesize;
 
+	argv = set_flags(argv, &argn);
+	if (get_flags("-h"))
+	{
+		print_help_message();
+		return (0);
+	}
 	if (argn < 2)
 	{
+		ft_printf("%s:\n", "a.out");
 		content_file = read_file("a.out", &filesize);
 		if (!choose_format(content_file, "a.out"))
 			nm_error(ERROR_FORMAT);
 	}
 	else
-	{
-		i = 0;
-		while (++i < argn)
-		{
-			if (argn > 2)
-				ft_printf("\n%s:\n", argv[i]);
-			content_file = read_file(argv[i], &filesize);
-			if (!choose_format(content_file, argv[i]))
-				nm_error(ERROR_FORMAT);
-			if (munmap(content_file, filesize))
-				nm_error(ERROR_FREE);
-		}
-	}
+		loop_resources(argv);
 	return (0);
 }
