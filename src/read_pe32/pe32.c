@@ -49,7 +49,11 @@ static t_pe32	fill_pe32(unsigned char *content_file)
 	pe32.opthdr = *(t_pe32_opthdr *)(content_file + pe32.doshdr.lfanew
 			+ 4 + sizeof(pe32.coffhdr));
 	if (!pe32.coffhdr.nsymbols)
-		nm_error(ERROR_NOSYMB);
+	{
+		ft_printf("No symbols\n");
+		pe32.symboltable = NULL;
+		return (pe32);
+	}
 	pe32.symboltable = content_file + pe32.coffhdr.offsymtable;
 	pe32.strtable = content_file + pe32.coffhdr.offsymtable
 		+ pe32.coffhdr.nsymbols * 18;
@@ -63,9 +67,10 @@ int	pe32(unsigned char *content_file, char *filename)
 	t_sort	*sort;
 
 	pe32 = fill_pe32(content_file);
+	if (!pe32.symboltable)
+		return (1);
 	sort = prepare_pe32_sort(pe32);
 	print_pe32_table(pe32, sort, filename);
 	free(sort);
-	filename = NULL;
 	return (1);
 }

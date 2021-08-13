@@ -42,6 +42,7 @@ static void	loop_resources(char **argv)
 {
 	unsigned char	*content_file;
 	size_t			filesize;
+
 	while (*argv)
 	{
 		content_file = read_file(*argv, &filesize);

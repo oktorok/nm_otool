@@ -97,6 +97,6 @@ int	macho64(unsigned char *content_file, char *filename)
 	macho = fill_macho(content_file);
 	sym_check = find_macho_symboltable(macho, content_file, filename);
 	if (!sym_check)
-		nm_error(ERROR_NOSYMB);
+		ft_printf("No symbols\n");
 	return (1);
 }

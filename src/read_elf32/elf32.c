@@ -62,6 +62,7 @@ static void	find_elf_symboltable(t_elf32 elf,
 	unsigned long	symlen;
 
 	i = 0;
+	symlen = 0;
 	while (i < elf.ehdr.shnum)
 	{
 		if (elf.shdr[i].type == SHT_SYMTAB)
@@ -73,6 +74,8 @@ static void	find_elf_symboltable(t_elf32 elf,
 		}
 		i++;
 	}
+	if (!symlen)
+		ft_printf("No symbols\n");
 }
 
 void	elf32(unsigned char *content_file, char *filename)

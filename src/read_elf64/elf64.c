@@ -66,7 +66,7 @@ static void	find_elf_symboltable(t_elf64 elf,
 		}
 		i++;
 	}
-	if (symlen == 0)
+	if (!symlen)
 		ft_printf("No symbols\n");
 }
 
