@@ -27,7 +27,9 @@ static char	select_macho32_nmtype2(t_macho32_sym symbol, t_macho32 macho)
 		return ('-');
 	if (symbol.type == N_INDR)
 		return ('I');
-	return ('S');
+	if (symbol.type & N_EXT)
+		return ('S');
+	return ('s');
 }
 
 char	select_macho32_nmtype(t_macho32_sym symbol, t_macho32 macho)
